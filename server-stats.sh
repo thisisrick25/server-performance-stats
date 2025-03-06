@@ -57,3 +57,10 @@ print_separator
 print_header "Top 5 Processes by Memory Usage:"
 ps aux | sort -nr -k 4 | head -5 | awk '{print $4 "% MEM - " $11}'
 print_separator
+
+print_header "Network Connections (from ss):"
+echo "Active Connections (by remote IP):"
+ss -tun | awk '/ESTAB/ {print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr
+echo "Listening Ports:"
+ss -tunl | awk '/LISTEN/ {print $4}'
+print_separator
