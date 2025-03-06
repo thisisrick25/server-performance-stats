@@ -24,7 +24,7 @@ echo "Kernel Version: $(uname -r)"
 echo "Uptime: $(uptime -p)"
 echo "Load Average: $(uptime | awk '{print $(NF-2), $(NF-1), $NF}')"
 echo "Logged-in Users: $(users)"
-echo "Failed Login Attempts: $(lastb | wc -l)"
+echo "Failed Login Attempts: $(lastb 2>/dev/null | wc -l)"
 print_separator
 
 # Total CPU Usage
