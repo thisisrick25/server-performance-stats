@@ -30,6 +30,7 @@ print_separator
 # Total CPU Usage
 print_header "Total CPU Usage:"
 top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}' | awk '{print "Total CPU Usage: " $1 "%"}'
+grep "model name" /proc/cpuinfo | head -1 | awk -F: '{print "CPU Model:" $2}'
 print_separator
 
 # Total Memory Usage
