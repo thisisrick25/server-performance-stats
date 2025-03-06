@@ -39,6 +39,10 @@ free -h | awk '
 NR==2{printf "Total: %s\tUsed: %s (%.1f%%)\tFree: %s (%.1f%%)\n", $2, $3, ($3/$2)*100, $4, ($4/$2)*100}'
 print_separator
 
+print_header "VMStat Summary (snapshot):"
+vmstat
+print_separator
+
 # Total Disk Usage
 print_header "Total Disk Usage:"
 df -h | awk '$NF=="/"{printf "Total: %.1fG\tUsed: %.1fG (%.1f%%)\tFree: %.1fG (%.1f%%)\n", $2/1024, $3/1024, ($3/$2)*100, $4/1024, ($4/$2)*100}'
