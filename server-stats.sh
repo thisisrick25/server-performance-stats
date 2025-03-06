@@ -8,6 +8,15 @@ print_separator() {
     echo "----------------------------------------"
 }
 
+# Detect if running under WSL (WSL 1 or WSL 2 include "microsoft" in /proc/version)
+if grep -qi "microsoft" /proc/version; then
+    IS_WSL=1
+    echo "Running under WSL environment."
+else
+    IS_WSL=0
+    echo "Running on native Linux."
+fi
+
 # System Information
 print_header "System Information:"
 echo "OS Version: $(cat /etc/os-release | grep PRETTY_NAME | cut -d'"' -f2)"
