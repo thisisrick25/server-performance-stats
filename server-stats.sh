@@ -22,7 +22,7 @@ print_header "System Information:"
 echo "OS Version: $(cat /etc/os-release | grep PRETTY_NAME | cut -d'"' -f2)"
 echo "Kernel Version: $(uname -r)"
 echo "Uptime: $(uptime -p)"
-echo "Load Average: $(uptime | awk '{print $8,$9,$10}')"
+echo "Load Average: $(uptime | awk '{print $(NF-2), $(NF-1), $NF}')"
 echo "Logged-in Users: $(users)"
 echo "Failed Login Attempts: $(lastb | wc -l)"
 print_separator
